@@ -33,7 +33,10 @@ class _PokedexScreenState extends State<PokedexScreen> {
     return Scaffold(
       appBar: AppBar(title: const Text('Pokédex ')),
       body: Padding(
-        padding: const EdgeInsets.all(16),
+       padding: const EdgeInsets.symmetric(
+  horizontal: 24,
+  vertical: 16,
+),
         child: Column(
           children: [
             TextField(
