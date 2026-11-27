@@ -22,5 +22,19 @@ ThemeData construirTema() {
     colorScheme: esquema,
     scaffoldBackgroundColor: AppColores.fondo,
     shadowColor: Colors.transparent,
+    appBarTheme: const AppBarTheme(
+      backgroundColor: AppColores.fondo,
+      foregroundColor: AppColores.texto,
+      elevation: 0,
+      scrolledUnderElevation: 0,
+      surfaceTintColor: Colors.transparent,
+      centerTitle: true,
+      titleTextStyle: TextStyle(
+        color: AppColores.texto,
+        fontSize: 20,
+        fontWeight: FontWeight.w700,
+        letterSpacing: 0.2,
+      ),
+    ),
   );
 }
