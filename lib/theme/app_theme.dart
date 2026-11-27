@@ -53,5 +53,18 @@ ThemeData construirTema() {
         borderSide: const BorderSide(color: AppColores.acento, width: 1.5),
       ),
     ),
+    filledButtonTheme: FilledButtonThemeData(
+      style: FilledButton.styleFrom(
+        backgroundColor: AppColores.acento,
+        foregroundColor: Colors.white,
+        elevation: 0,
+        minimumSize: const Size(56, 54),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+        textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+      ),
+    ),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
+      color: AppColores.acento,
+    ),
   );
 }
