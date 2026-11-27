@@ -55,7 +55,7 @@ ThemeData construirTema() {
     ),
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(
-        backgroundColor: AppColores.acento,
+        backgroundColor: const Color.fromARGB(255, 61, 151, 229),
         foregroundColor: Colors.white,
         elevation: 0,
         minimumSize: const Size(56, 54),
