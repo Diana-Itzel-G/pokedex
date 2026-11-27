@@ -6,7 +6,18 @@ import '../models/pokemon.dart';
 
 Future<Pokemon> obtenerPokemon(String nombre) async {
   // INICIO TODO 2
-  // TODO 2: hacer la petición y revisar el statusCode
-  throw UnimplementedError('TODO 2');
+  final url = Uri.parse(
+    'https://pokeapi.co/api/v2/pokemon/${nombre.toLowerCase()}',
+  );
+  final respuesta = await http.get(url);
+
+  if (respuesta.statusCode == 200) {
+    final datos = jsonDecode(respuesta.body) as Map<String, dynamic>;
+    return Pokemon.fromJson(datos);
+  } else if (respuesta.statusCode == 404) {
+    throw Exception('No se encontró el Pokémon "$nombre"');
+  } else {
+    throw Exception('Error del servidor (${respuesta.statusCode})');
+  }
   // FIN TODO 2
 }

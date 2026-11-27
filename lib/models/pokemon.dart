@@ -20,5 +20,6 @@ class Pokemon {
           json['sprites']['other']['official-artwork']['front_default'] ?? '',
       tipos: [for (final t in json['types']) t['type']['name'] as String],
     );
+    // FIN TODO 1
   }
 }

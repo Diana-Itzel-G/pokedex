@@ -57,8 +57,48 @@ class _PokedexScreenState extends State<PokedexScreen> {
                       future: _futuroPokemon,
                       builder: (context, snapshot) {
                         // INICIO TODO 3
-                        // TODO 3: mostrar carga, error y éxito
-                        return const Center(child: Text('TODO 3'));
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        if (snapshot.hasError) {
+                          return Center(
+                            child: Text(
+                              snapshot.error.toString().replaceFirst(
+                                'Exception: ',
+                                '',
+                              ),
+                              style: const TextStyle(color: Colors.red),
+                              textAlign: TextAlign.center,
+                            ),
+                          );
+                        }
+                        final pokemon = snapshot.data!;
+                        return SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              if (pokemon.imagen.isNotEmpty)
+                                Image.network(pokemon.imagen, height: 200),
+                              const SizedBox(height: 12),
+                              Text(
+                                '#${pokemon.id} ${pokemon.nombre[0].toUpperCase()}${pokemon.nombre.substring(1)}',
+                                style: Theme.of(
+                                  context,
+                                ).textTheme.headlineSmall,
+                              ),
+                              const SizedBox(height: 8),
+                              Wrap(
+                                spacing: 8,
+                                children: [
+                                  for (final tipo in pokemon.tipos)
+                                    Chip(label: Text(tipo)),
+                                ],
+                              ),
+                            ],
+                          ),
+                        );
                         // FIN TODO 3
                       },
                     ),
