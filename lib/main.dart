@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'screens/pokedex_screen.dart';
+import 'theme/app_theme.dart';
 
 void main() {
   runApp(const MiApp());
@@ -14,7 +15,7 @@ class MiApp extends StatelessWidget {
     return MaterialApp(
       title: 'Pokédex mínima',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(colorSchemeSeed: Colors.red),
+      theme: construirTema(),
       home: const PokedexScreen(),
     );
   }
