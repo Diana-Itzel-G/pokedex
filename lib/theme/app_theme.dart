@@ -17,6 +17,11 @@ ThemeData construirTema() {
     surface: AppColores.fondo,
   );
 
+  final bordeRedondeado = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(14),
+    borderSide: const BorderSide(color: AppColores.borde),
+  );
+
   return ThemeData(
     useMaterial3: true,
     colorScheme: esquema,
@@ -34,6 +39,18 @@ ThemeData construirTema() {
         fontSize: 20,
         fontWeight: FontWeight.w700,
         letterSpacing: 0.2,
+      ),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: AppColores.superficie,
+      hintStyle: const TextStyle(color: AppColores.textoSuave),
+      prefixIconColor: AppColores.textoSuave,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+      border: bordeRedondeado,
+      enabledBorder: bordeRedondeado,
+      focusedBorder: bordeRedondeado.copyWith(
+        borderSide: const BorderSide(color: AppColores.acento, width: 1.5),
       ),
     ),
   );
