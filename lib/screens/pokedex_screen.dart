@@ -14,13 +14,18 @@ class PokedexScreen extends StatefulWidget {
 class _PokedexScreenState extends State<PokedexScreen> {
   final _controlador = TextEditingController();
   Future<Pokemon>? _futuroPokemon;
-
+    final List<String> _historial = [];
   void _buscar() {
     final texto = _controlador.text.trim();
 
     if (texto.isEmpty) return;
 
     setState(() {
+      _historial.insert(0, texto);
+
+    if (_historial.length > 5) {
+      _historial.removeLast();
+    }
       _futuroPokemon = obtenerPokemon(texto);
     });
   }
@@ -62,7 +67,22 @@ class _PokedexScreenState extends State<PokedexScreen> {
             ),
 
             const SizedBox(height: 24),
+         if (_historial.isNotEmpty)
+  Wrap(
+    spacing: 8,
+    children: _historial.map((pokemon) {
+      return ActionChip(
+        label: Text(pokemon),
+        onPressed: () {
+          _controlador.text = pokemon;
 
+          setState(() {
+            _futuroPokemon = obtenerPokemon(pokemon);
+          });
+        },
+      );
+    }).toList(),
+  ),
             Expanded(
               child:
                   _futuroPokemon == null
@@ -89,7 +109,7 @@ class _PokedexScreenState extends State<PokedexScreen> {
                                   '',
                                 ),
                                 style: const TextStyle(
-                                  color: Colors.red,
+                                  color: Color.fromARGB(255, 241, 63, 50),
                                 ),
                                 textAlign: TextAlign.center,
                               ),
@@ -119,7 +139,7 @@ class _PokedexScreenState extends State<PokedexScreen> {
                                     Text(
                                       '#${pokemon.id}',
                                       style: const TextStyle(
-                                        fontSize: 18,
+                                        fontSize: 16,
                                         color: Colors.grey,
                                       ),
                                     ),
@@ -146,7 +166,7 @@ class _PokedexScreenState extends State<PokedexScreen> {
                                             label: Text(
                                               nombreDeTipo(tipo),
                                               style: const TextStyle(
-                                                color: Colors.white,
+                                                color: Color.fromARGB(245, 255, 255, 255),
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
