@@ -54,7 +54,7 @@ class _PokedexScreenState extends State<PokedexScreen> {
             Expanded(
               child: _futuroPokemon == null
                   ? const Center(
-                      child: Text('Escribe un nombre y presiona Buscar'),
+                      child: Text('Busca tu Pokémon favorito'),
                     )
                   : FutureBuilder<Pokemon>(
                       future: _futuroPokemon,
