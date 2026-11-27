@@ -9,3 +9,18 @@ class AppColores {
   static const textoSuave = Color(0xFF8A8780);
   static const acento = Color(0xFFE5533D);
 }
+
+ThemeData construirTema() {
+  final esquema = ColorScheme.fromSeed(
+    seedColor: AppColores.acento,
+    primary: AppColores.acento,
+    surface: AppColores.fondo,
+  );
+
+  return ThemeData(
+    useMaterial3: true,
+    colorScheme: esquema,
+    scaffoldBackgroundColor: AppColores.fondo,
+    shadowColor: Colors.transparent,
+  );
+}
